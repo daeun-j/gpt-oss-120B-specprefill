@@ -1,0 +1,63 @@
+{
+  "created_at": "2026-07-09 21:49:37 UTC",
+  "source_json": "results/vllm_gptoss_120b_gpu_qwen_quality/quality_gpt_oss_120b_20260709T214611Z.json",
+  "kind": "vllm_quality_public_summary",
+  "stack": {
+    "target_model": "gpt-oss-120b",
+    "target_url": "http://localhost:8000",
+    "target_tokenizer": "/workspace/models/openai__gpt-oss-120b",
+    "scorer_model": "Qwen/Qwen3-0.6B",
+    "scorer_device": "cuda:0",
+    "dataset_name": "THUDM/LongBench-v2",
+    "dataset_split": "test",
+    "quality_n": 20,
+    "quality_prompt_tokens": 16000,
+    "quality_max_tokens": 256
+  },
+  "summary": [
+    {
+      "keep_rate": 0.3,
+      "n": 20,
+      "rouge_l_f1_mean": 0.21508901448791806,
+      "rouge_l_f1_std": 0.20036270149666377,
+      "full_ttft_s_mean": 0.06721337274793768,
+      "compressed_prefill_s_mean": 0.034197262951056476,
+      "scorer_s_mean": 0.2629838825509069,
+      "full_text_source_counts": {
+        "reasoning": 14,
+        "content": 6
+      },
+      "compressed_text_source_counts": {
+        "reasoning": 13,
+        "content": 7
+      },
+      "avg_original_target_tokens": 15999.8,
+      "avg_compressed_target_tokens": 4863.35
+    },
+    {
+      "keep_rate": 0.5,
+      "n": 20,
+      "rouge_l_f1_mean": 0.33867134329686244,
+      "rouge_l_f1_std": 0.21818730580862164,
+      "full_ttft_s_mean": 0.06721337274793768,
+      "compressed_prefill_s_mean": 0.047211327651166354,
+      "scorer_s_mean": 0.2629838825509069,
+      "full_text_source_counts": {
+        "reasoning": 14,
+        "content": 6
+      },
+      "compressed_text_source_counts": {
+        "reasoning": 13,
+        "content": 7
+      },
+      "avg_original_target_tokens": 15999.8,
+      "avg_compressed_target_tokens": 8063.15
+    }
+  ],
+  "limitations": [
+    "ROUGE-L is computed against the full-prompt answer, not a human gold answer.",
+    "The scorer is Qwen/Qwen3-0.6B by default, not same-family GPT-OSS-20B.",
+    "Quality generation uses max_tokens from quality_max_tokens; it is not a full open-ended generation benchmark.",
+    "For GPT-OSS/vLLM, text may appear in reasoning instead of content. The summarizer reports text_source counts."
+  ]
+}

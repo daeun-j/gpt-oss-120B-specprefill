@@ -1,0 +1,53 @@
+{
+  "kind": "vllm_ttft_public_summary",
+  "created_at": "20260709T202047Z",
+  "source_file": "ttft_gpt_oss_120b_20260709T202047Z.json",
+  "stack": {
+    "target": "openai/gpt-oss-120b",
+    "runtime": "vLLM OpenAI-compatible endpoint",
+    "endpoint_model": "gpt-oss-120b",
+    "target_path": "/workspace/models/openai__gpt-oss-120b",
+    "max_model_len": 32768,
+    "scorer": "Qwen/Qwen3-0.6B",
+    "scorer_device": "cpu",
+    "method": "logit-surprise chunk top-k + head/tail anchor, then vLLM TTFT measurement",
+    "keep_rate": 0.3
+  },
+  "measured": [
+    {
+      "target_prompt_tokens": 16000,
+      "keep_rate": 0.3,
+      "n": 5,
+      "full_ttft_s_mean": 0.9078484919969924,
+      "full_ttft_s_std": 0.0035959911478368758,
+      "compressed_prefill_s_mean": 0.24377148139756172,
+      "compressed_prefill_s_std": 0.0025765307147384135,
+      "scorer_s_mean": 58.79780383220641,
+      "compressed_e2e_s_mean": 59.04157531360397,
+      "prefill_speedup": 3.724178426418969,
+      "e2e_speedup": 0.015376427325573271,
+      "avg_original_target_tokens": 15999.6,
+      "avg_compressed_target_tokens": 4863.6
+    },
+    {
+      "target_prompt_tokens": 32000,
+      "keep_rate": 0.3,
+      "n": 5,
+      "full_ttft_s_mean": 1.9853109885996674,
+      "full_ttft_s_std": 0.011475065188892542,
+      "compressed_prefill_s_mean": 0.5057083397987299,
+      "compressed_prefill_s_std": 0.006325863052069464,
+      "scorer_s_mean": 120.88847195780254,
+      "compressed_e2e_s_mean": 121.39418029760127,
+      "prefill_speedup": 3.9258023496108727,
+      "e2e_speedup": 0.01635425177494194,
+      "avg_original_target_tokens": 32000.0,
+      "avg_compressed_target_tokens": 9599.6
+    }
+  ],
+  "limitations": [
+    "TTFT uses max_tokens=1 and temperature=0; this is prefill/first-token latency, not full generation quality.",
+    "Compressed end-to-end latency includes CPU scorer time, which dominates the measured e2e path.",
+    "Quality ROUGE-L was not measured in these TTFT runs."
+  ]
+}

@@ -1,0 +1,9 @@
+torch
+transformers>=4.53.0
+huggingface_hub>=0.34.0,<1.0
+accelerate
+datasets
+httpx
+numpy
+tiktoken
+sentencepiece

@@ -1,0 +1,139 @@
+{
+  "kind": "ttft",
+  "created_at": "20260709T200146Z",
+  "endpoint": {
+    "base_url": "http://localhost:8000",
+    "ok": true,
+    "models_status": 200,
+    "models": {
+      "object": "list",
+      "data": [
+        {
+          "id": "gpt-oss-120b",
+          "object": "model",
+          "created": 1783627186,
+          "owned_by": "vllm",
+          "root": "/workspace/models/openai__gpt-oss-120b",
+          "parent": null,
+          "max_model_len": 32768,
+          "permission": [
+            {
+              "id": "modelperm-87e30028cbc94304",
+              "object": "model_permission",
+              "created": 1783627186,
+              "allow_create_engine": false,
+              "allow_sampling": true,
+              "allow_logprobs": true,
+              "allow_search_indices": false,
+              "allow_view": true,
+              "allow_fine_tuning": false,
+              "organization": "*",
+              "group": null,
+              "is_blocking": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "config": {
+    "mode": "ttft",
+    "target_url": "http://localhost:8000",
+    "target_model": "gpt-oss-120b",
+    "target_tokenizer": "/workspace/models/openai__gpt-oss-120b",
+    "scorer_model": "Qwen/Qwen3-0.6B",
+    "scorer_device": "cpu",
+    "scorer_dtype": "auto",
+    "score_window": 2048,
+    "chunk_tokens": 128,
+    "anchor_tokens": 512,
+    "delimiter": "",
+    "keep_rates": "0.3",
+    "temperature": 0.0,
+    "request_timeout": 1200.0,
+    "sleep_s": 0.2,
+    "output_dir": "results/vllm_gptoss_120b",
+    "trust_remote_code": false,
+    "prompt_tokens": "32000",
+    "measurements": 1,
+    "warmups": 0,
+    "max_tokens": 1,
+    "quality_source": "longbench",
+    "quality_jsonl": "",
+    "dataset_name": "THUDM/LongBench-v2",
+    "dataset_split": "test",
+    "quality_n": 20,
+    "quality_prompt_tokens": 16000,
+    "quality_max_tokens": 80
+  },
+  "records": [
+    {
+      "mode": "ttft",
+      "phase": "measure",
+      "target_prompt_tokens": 32000,
+      "keep_rate": 0.3,
+      "run_index": 0,
+      "nonce": "ttft-32000-0.3-0-20260709T195946Z",
+      "full": {
+        "ok": true,
+        "ttft_s": 1.9845749680243898,
+        "total_s": 1.9851384200155735,
+        "text": "",
+        "usage": {
+          "prompt_tokens": 32067,
+          "total_tokens": 32068,
+          "completion_tokens": 1
+        },
+        "first_event_s": 1.9845749680243898,
+        "error": null
+      },
+      "compressed": {
+        "ok": true,
+        "ttft_s": 0.4960118400049396,
+        "total_s": 0.49656312199658714,
+        "text": "",
+        "usage": {
+          "prompt_tokens": 9667,
+          "total_tokens": 9668,
+          "completion_tokens": 1
+        },
+        "first_event_s": 0.4960118400049396,
+        "error": null
+      },
+      "scorer_s": 113.84301311601303,
+      "compressed_e2e_s": 114.33902495601797,
+      "prefill_speedup": 4.00106370042422,
+      "e2e_speedup": 0.017356934509348696,
+      "compression": {
+        "original_target_tokens": 32000,
+        "selected_target_tokens": 9600,
+        "compressed_target_tokens": 9600,
+        "effective_keep_rate": 0.3,
+        "selected_chunks": 75,
+        "total_chunks": 250
+      },
+      "scorer": {
+        "method": "logit_surprise_offsets",
+        "scorer_tokens": 37372,
+        "fallback": false
+      }
+    }
+  ],
+  "summary": [
+    {
+      "target_prompt_tokens": 32000,
+      "keep_rate": 0.3,
+      "n": 1,
+      "full_ttft_s_mean": 1.9845749680243898,
+      "full_ttft_s_std": 0.0,
+      "compressed_prefill_s_mean": 0.4960118400049396,
+      "compressed_prefill_s_std": 0.0,
+      "scorer_s_mean": 113.84301311601303,
+      "compressed_e2e_s_mean": 114.33902495601797,
+      "prefill_speedup": 4.00106370042422,
+      "e2e_speedup": 0.017356934509348696,
+      "avg_original_target_tokens": 32000.0,
+      "avg_compressed_target_tokens": 9600.0
+    }
+  ]
+}

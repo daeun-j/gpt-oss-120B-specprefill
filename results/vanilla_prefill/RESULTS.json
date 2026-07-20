@@ -1,0 +1,78 @@
+{
+  "kind": "vanilla_prefill_public_summary",
+  "created_at": "2026-07-09",
+  "stack": {
+    "target": "openai/gpt-oss-120b",
+    "target_path": "/workspace/models/openai__gpt-oss-120b",
+    "scorer": "openai/gpt-oss-20b",
+    "scorer_path": "/workspace/models/openai__gpt-oss-20b",
+    "scorer_device": "cuda:3",
+    "hardware": "4x RTX PRO 6000 Blackwell WS, Vast.ai",
+    "runtime": "HF Transformers vanilla prefill",
+    "attention": "eager",
+    "target_max_memory": "0:55GiB,1:55GiB,2:55GiB,3:4GiB,cpu:500GiB"
+  },
+  "measured": [
+    {
+      "target_prompt_tokens": 16000,
+      "keep_rate": 0.3,
+      "full_prefill_s": null,
+      "full_status": "oom",
+      "compressed_prefill_s": 4.077108461409807,
+      "scorer_s": 58.09614382684231,
+      "compressed_e2e_s": 62.173252288252115,
+      "original_target_tokens": 16000,
+      "compressed_target_tokens": 4864,
+      "full_error_summary": "CUDA out of memory; tried to allocate 30.52 GiB",
+      "status": "partial"
+    }
+  ],
+  "estimated": [
+    {
+      "metric": "full_16k_prefill_latency_s",
+      "range": [40, 50],
+      "confidence": "low"
+    },
+    {
+      "metric": "full_32k_prefill_latency_s",
+      "range": [160, 190],
+      "confidence": "low"
+    },
+    {
+      "metric": "prefill_only_speedup_16k",
+      "range": [9.8, 12.3],
+      "confidence": "low"
+    },
+    {
+      "metric": "e2e_speedup_16k_including_scorer",
+      "range": [0.64, 0.8],
+      "confidence": "medium"
+    },
+    {
+      "metric": "compressed_32k_prefill_latency_s",
+      "range": [14, 18],
+      "confidence": "low"
+    },
+    {
+      "metric": "e2e_speedup_32k_including_scorer",
+      "range": [4.2, 7.3],
+      "confidence": "low"
+    },
+    {
+      "metric": "longbench_qa_rouge_l_keep_0.3",
+      "range": [0.35, 0.45],
+      "confidence": "low"
+    },
+    {
+      "metric": "longbench_qa_rouge_l_keep_0.5",
+      "range": [0.45, 0.55],
+      "confidence": "low"
+    }
+  ],
+  "limitations": [
+    "Full 16K and 32K baselines did not produce valid measurements in vanilla HF eager attention.",
+    "This is direct prefill timing, not serving-engine TTFT.",
+    "Quality ROUGE-L rows were estimated, not measured, because generation was not run.",
+    "The 16K end-to-end path is dominated by scorer latency."
+  ]
+}
